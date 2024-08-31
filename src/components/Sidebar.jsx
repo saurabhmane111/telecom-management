@@ -89,7 +89,9 @@ const Sidebar = () => {
             <SubMenuLink to="/sales/quotations">Quotations</SubMenuLink>
           </SubMenuItem>
           <SubMenuItem>
-            <SubMenuLink to="/sales/lead-opportunity-management">Lead and Opportunity Management</SubMenuLink>
+            <SubMenuLink to="/sales/lead-opportunity-management">
+              Lead and Opportunity Management
+            </SubMenuLink>
           </SubMenuItem>
         </SubMenu>
       </SidebarItem>
@@ -121,6 +123,12 @@ const Sidebar = () => {
               Site Survey Form
             </SubMenuLink>
           </SubMenuItem>
+          <SubMenuItem>
+            <SubMenuLink to="/installations/team-allocation">
+              Team Allocation
+            </SubMenuLink>
+          </SubMenuItem>
+
           <SubMenuItem>
             <SubMenuLink to="/installations/progress">
               Installation Progress

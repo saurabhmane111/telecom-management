@@ -13,8 +13,8 @@ import SalesManagementPage from "./pages/SalesManagementPage";
 // Sales Management Subroutes
 import Appointments from "./components/Appointments";
 import LeadManagement from "./components/LeadManagement";
+import LeadOpportunityManagement from "./components/LeadOpportunityManagement";
 import Quotations from "./components/Quotations";
-import LeadOpportunityManagement from "./components/LeadOpportunityManagement"; // Import the new component
 
 // Order Management Subroutes
 import OrderTracking from "./components/OrderTracking";
@@ -25,6 +25,7 @@ import VendorManagement from "./components/VendorManagement";
 import InstallationProgress from "./components/InstallationProgress";
 import QAForm from "./components/QAForm";
 import SiteSurveyForm from "./components/SiteSurveyForm";
+import TeamAllocation from "./components/TeamAllocation";
 
 // Post Installation Support Subroutes
 import FeedbackForm from "./components/FeedbackForm";
@@ -44,28 +45,42 @@ function App() {
         <main style={{ marginLeft: "250px", padding: "20px", width: "100%" }}>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/sales" element={<SalesManagementPage />}>
+            <Route path="/sales/*" element={<SalesManagementPage />}>
               <Route path="leads" element={<LeadManagement />} />
               <Route path="appointments" element={<Appointments />} />
               <Route path="quotations" element={<Quotations />} />
-              <Route path="lead-opportunity-management" element={<LeadOpportunityManagement />} /> {/* Add the new route */}
+              <Route
+                path="lead-opportunity-management"
+                element={<LeadOpportunityManagement />}
+              />
             </Route>
-            <Route path="/orders" element={<OrderManagementPage />}>
+            <Route path="/orders/*" element={<OrderManagementPage />}>
               <Route path="tracking" element={<OrderTracking />} />
               <Route path="vendors" element={<VendorManagement />} />
               <Route path="purchase-orders" element={<PurchaseOrders />} />
             </Route>
-            <Route path="/installations" element={<InstallationManagementPage />}>
+            <Route
+              path="/installations/*"
+              element={<InstallationManagementPage />}
+            >
               <Route path="site-survey" element={<SiteSurveyForm />} />
+              <Route path="team-allocation" element={<TeamAllocation />} />
               <Route path="progress" element={<InstallationProgress />} />
               <Route path="qa" element={<QAForm />} />
             </Route>
-            <Route path="/support" element={<PostInstallationSupportPage />}>
-              <Route path="monitoring-dashboard" element={<MonitoringDashboard />} />
-              <Route path="maintenance-tasks" element={<MaintenanceTaskList />} />
+
+            <Route path="/support/*" element={<PostInstallationSupportPage />}>
+              <Route
+                path="monitoring-dashboard"
+                element={<MonitoringDashboard />}
+              />
+              <Route
+                path="maintenance-tasks"
+                element={<MaintenanceTaskList />}
+              />
               <Route path="feedback" element={<FeedbackForm />} />
             </Route>
-            <Route path="/financials" element={<FinancialManagementPage />}>
+            <Route path="/financials/*" element={<FinancialManagementPage />}>
               <Route path="invoices" element={<InvoiceTable />} />
               <Route path="cost-dashboard" element={<CostDashboard />} />
               <Route path="payment-form" element={<PaymentForm />} />
