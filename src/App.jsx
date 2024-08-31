@@ -36,6 +36,7 @@ import MonitoringDashboard from "./components/MonitoringDashboard";
 import CostDashboard from "./components/CostDashboard";
 import InvoiceTable from "./components/InvoiceTable";
 import PaymentForm from "./components/PaymentForm";
+import TasksBoard from "./components/TasksBoard";
 
 function App() {
   return (
@@ -45,14 +46,16 @@ function App() {
         <main style={{ marginLeft: "250px", padding: "20px", width: "100%" }}>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/sales/*" element={<SalesManagementPage />}>
+            <Route path="/sales" element={<SalesManagementPage />}>
+              <Route path="leadboard" element={<TasksBoard />} />
               <Route path="leads" element={<LeadManagement />} />
               <Route path="appointments" element={<Appointments />} />
               <Route path="quotations" element={<Quotations />} />
               <Route
                 path="lead-opportunity-management"
                 element={<LeadOpportunityManagement />}
-              />
+              />{" "}
+              {/* Add the new route */}
             </Route>
             <Route path="/orders/*" element={<OrderManagementPage />}>
               <Route path="tracking" element={<OrderTracking />} />
@@ -60,7 +63,7 @@ function App() {
               <Route path="purchase-orders" element={<PurchaseOrders />} />
             </Route>
             <Route
-              path="/installations/*"
+              path="/installations"
               element={<InstallationManagementPage />}
             >
               <Route path="site-survey" element={<SiteSurveyForm />} />
@@ -68,8 +71,7 @@ function App() {
               <Route path="progress" element={<InstallationProgress />} />
               <Route path="qa" element={<QAForm />} />
             </Route>
-
-            <Route path="/support/*" element={<PostInstallationSupportPage />}>
+            <Route path="/support" element={<PostInstallationSupportPage />}>
               <Route
                 path="monitoring-dashboard"
                 element={<MonitoringDashboard />}

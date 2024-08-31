@@ -201,10 +201,6 @@ const LeadManagement = () => {
   return (
     <Container>
       <Section>
-        <Title>Tasks Board</Title>
-        <TasksBoard /> {/* Include the TasksBoard component here */}
-      </Section>
-      <Section>
         <Title>Lead Management</Title>
         <LeadForm onSubmit={handleSubmit(onSubmit)}>
           <Input
