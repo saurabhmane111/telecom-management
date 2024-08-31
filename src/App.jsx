@@ -14,6 +14,7 @@ import SalesManagementPage from "./pages/SalesManagementPage";
 import Appointments from "./components/Appointments";
 import LeadManagement from "./components/LeadManagement";
 import Quotations from "./components/Quotations";
+import LeadOpportunityManagement from "./components/LeadOpportunityManagement"; // Import the new component
 
 // Order Management Subroutes
 import OrderTracking from "./components/OrderTracking";
@@ -47,29 +48,21 @@ function App() {
               <Route path="leads" element={<LeadManagement />} />
               <Route path="appointments" element={<Appointments />} />
               <Route path="quotations" element={<Quotations />} />
+              <Route path="lead-opportunity-management" element={<LeadOpportunityManagement />} /> {/* Add the new route */}
             </Route>
             <Route path="/orders" element={<OrderManagementPage />}>
               <Route path="tracking" element={<OrderTracking />} />
               <Route path="vendors" element={<VendorManagement />} />
               <Route path="purchase-orders" element={<PurchaseOrders />} />
             </Route>
-            <Route
-              path="/installations"
-              element={<InstallationManagementPage />}
-            >
+            <Route path="/installations" element={<InstallationManagementPage />}>
               <Route path="site-survey" element={<SiteSurveyForm />} />
               <Route path="progress" element={<InstallationProgress />} />
               <Route path="qa" element={<QAForm />} />
             </Route>
             <Route path="/support" element={<PostInstallationSupportPage />}>
-              <Route
-                path="monitoring-dashboard"
-                element={<MonitoringDashboard />}
-              />
-              <Route
-                path="maintenance-tasks"
-                element={<MaintenanceTaskList />}
-              />
+              <Route path="monitoring-dashboard" element={<MonitoringDashboard />} />
+              <Route path="maintenance-tasks" element={<MaintenanceTaskList />} />
               <Route path="feedback" element={<FeedbackForm />} />
             </Route>
             <Route path="/financials" element={<FinancialManagementPage />}>
