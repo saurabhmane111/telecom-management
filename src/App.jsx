@@ -35,6 +35,7 @@ import MonitoringDashboard from "./components/MonitoringDashboard";
 import CostDashboard from "./components/CostDashboard";
 import InvoiceTable from "./components/InvoiceTable";
 import PaymentForm from "./components/PaymentForm";
+import TasksBoard from "./components/TasksBoard";
 
 function App() {
   return (
@@ -45,24 +46,38 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/sales" element={<SalesManagementPage />}>
+              <Route path="leadboard" element={<TasksBoard />} />
               <Route path="leads" element={<LeadManagement />} />
               <Route path="appointments" element={<Appointments />} />
               <Route path="quotations" element={<Quotations />} />
-              <Route path="lead-opportunity-management" element={<LeadOpportunityManagement />} /> {/* Add the new route */}
+              <Route
+                path="lead-opportunity-management"
+                element={<LeadOpportunityManagement />}
+              />{" "}
+              {/* Add the new route */}
             </Route>
             <Route path="/orders" element={<OrderManagementPage />}>
               <Route path="tracking" element={<OrderTracking />} />
               <Route path="vendors" element={<VendorManagement />} />
               <Route path="purchase-orders" element={<PurchaseOrders />} />
             </Route>
-            <Route path="/installations" element={<InstallationManagementPage />}>
+            <Route
+              path="/installations"
+              element={<InstallationManagementPage />}
+            >
               <Route path="site-survey" element={<SiteSurveyForm />} />
               <Route path="progress" element={<InstallationProgress />} />
               <Route path="qa" element={<QAForm />} />
             </Route>
             <Route path="/support" element={<PostInstallationSupportPage />}>
-              <Route path="monitoring-dashboard" element={<MonitoringDashboard />} />
-              <Route path="maintenance-tasks" element={<MaintenanceTaskList />} />
+              <Route
+                path="monitoring-dashboard"
+                element={<MonitoringDashboard />}
+              />
+              <Route
+                path="maintenance-tasks"
+                element={<MaintenanceTaskList />}
+              />
               <Route path="feedback" element={<FeedbackForm />} />
             </Route>
             <Route path="/financials" element={<FinancialManagementPage />}>

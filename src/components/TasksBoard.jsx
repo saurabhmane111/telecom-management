@@ -59,10 +59,18 @@ const Tag = styled.span`
   margin-right: 8px;
 `;
 
+const Title = styled.h2`
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+`;
 // TasksBoard component
 const TasksBoard = () => {
   return (
     <BoardContainer>
+      <Title>Tasks Board</Title>
       <Column>
         <ColumnHeader>To Do</ColumnHeader>
         <TaskCard>

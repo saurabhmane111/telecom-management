@@ -83,13 +83,18 @@ const Sidebar = () => {
             <SubMenuLink to="/sales/leads">Lead Management</SubMenuLink>
           </SubMenuItem>
           <SubMenuItem>
+            <SubMenuLink to="/sales/leadboard">Lead Task Board</SubMenuLink>
+          </SubMenuItem>
+          <SubMenuItem>
             <SubMenuLink to="/sales/appointments">Appointments</SubMenuLink>
           </SubMenuItem>
           <SubMenuItem>
             <SubMenuLink to="/sales/quotations">Quotations</SubMenuLink>
           </SubMenuItem>
           <SubMenuItem>
-            <SubMenuLink to="/sales/lead-opportunity-management">Lead and Opportunity Management</SubMenuLink>
+            <SubMenuLink to="/sales/lead-opportunity-management">
+              Lead and Opportunity Management
+            </SubMenuLink>
           </SubMenuItem>
         </SubMenu>
       </SidebarItem>
