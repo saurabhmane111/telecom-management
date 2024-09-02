@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import OrderTracking from "../components/OrderTracking";
 import PurchaseOrders from "../components/PurchaseOrders";
 import VendorManagement from "../components/VendorManagement";
+import { TaskScheduling } from "../components/TaskScheduling";
 
 function OrderManagementPage() {
   return (

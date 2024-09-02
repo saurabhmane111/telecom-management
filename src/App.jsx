@@ -37,6 +37,8 @@ import CostDashboard from "./components/CostDashboard";
 import InvoiceTable from "./components/InvoiceTable";
 import PaymentForm from "./components/PaymentForm";
 import TasksBoard from "./components/TasksBoard";
+import { TaskScheduling } from "./components/TaskScheduling";
+import ProjectManagementPage from "./pages/ProjectManagementPage";
 
 function App() {
   return (
@@ -62,6 +64,8 @@ function App() {
               <Route path="vendors" element={<VendorManagement />} />
               <Route path="purchase-orders" element={<PurchaseOrders />} />
             </Route>
+            <Route path="/project/*" element={<ProjectManagementPage />} />
+
             <Route
               path="/installations"
               element={<InstallationManagementPage />}

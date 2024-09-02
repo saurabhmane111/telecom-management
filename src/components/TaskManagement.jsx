@@ -41,7 +41,7 @@ const Button = styled.button`
   }
 `;
 
-function TaskManagement() {
+function TaskBreakdownScheduling() {
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
@@ -64,4 +64,4 @@ function TaskManagement() {
   );
 }
 
-export default TaskManagement;
+export default TaskBreakdownScheduling;
