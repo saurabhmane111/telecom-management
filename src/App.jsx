@@ -20,6 +20,7 @@ import Quotations from "./components/Quotations";
 import OrderTracking from "./components/OrderTracking";
 import PurchaseOrders from "./components/PurchaseOrders";
 import VendorManagement from "./components/VendorManagement";
+import VendorDetailsPage from "./components/VendorDetailsPage";
 
 // Installation Management Subroutes
 import InstallationProgress from "./components/InstallationProgress";
@@ -37,6 +38,8 @@ import CostDashboard from "./components/CostDashboard";
 import InvoiceTable from "./components/InvoiceTable";
 import PaymentForm from "./components/PaymentForm";
 import TasksBoard from "./components/TasksBoard";
+import { TaskScheduling } from "./components/TaskScheduling";
+import ProjectManagementPage from "./pages/ProjectManagementPage";
 
 function App() {
   return (
@@ -61,7 +64,10 @@ function App() {
               <Route path="tracking" element={<OrderTracking />} />
               <Route path="vendors" element={<VendorManagement />} />
               <Route path="purchase-orders" element={<PurchaseOrders />} />
+              <Route path="vendord" element={<VendorDetailsPage/>} />
             </Route>
+            <Route path="/project/*" element={<ProjectManagementPage />} />
+
             <Route
               path="/installations"
               element={<InstallationManagementPage />}

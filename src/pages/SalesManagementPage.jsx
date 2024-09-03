@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Appointments from "../components/Appointments";
 import LeadManagement from "../components/LeadManagement";
 import Quotations from "../components/Quotations";
@@ -8,7 +8,6 @@ import TasksBoard from "../components/TasksBoard";
 
 function SalesManagementPage() {
   // Use the current location to determine which component to show
-  const location = useLocation();
 
   return (
     <div>
@@ -18,7 +17,11 @@ function SalesManagementPage() {
         <Route path="leadboard" element={<TasksBoard />} />
         <Route path="appointments" element={<Appointments />} />
         <Route path="quotations" element={<Quotations />} />
-        <Route path="lead-opportunity-management" element={<LeadOpportunityManagement />} /> {/* Add the new route */}
+        <Route
+          path="lead-opportunity-management"
+          element={<LeadOpportunityManagement />}
+        />{" "}
+        {/* Add the new route */}
       </Routes>
     </div>
   );

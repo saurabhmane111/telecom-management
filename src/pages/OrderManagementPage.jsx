@@ -4,6 +4,10 @@ import OrderTracking from "../components/OrderTracking";
 import PurchaseOrders from "../components/PurchaseOrders";
 import VendorManagement from "../components/VendorManagement";
 
+import VendorDetailsPage from "../components/VendorDetailsPage";
+import { TaskScheduling } from "../components/TaskScheduling";
+
+
 function OrderManagementPage() {
   return (
     <div>
@@ -13,6 +17,7 @@ function OrderManagementPage() {
         <Route path="tracking" element={<OrderTracking />} />
         <Route path="vendors" element={<VendorManagement />} />
         <Route path="purchase-orders" element={<PurchaseOrders />} />
+        <Route path="vendord" element={<VendorDetailsPage/>} />
       </Routes>
     </div>
   );
