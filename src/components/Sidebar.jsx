@@ -99,6 +99,28 @@ const Sidebar = () => {
         </SubMenu>
       </SidebarItem>
       <SidebarItem>
+        <SidebarLink onClick={() => toggleMenu("project")}>
+          Project Management
+          <SubMenuLink to="project/initialization">Project Initialization</SubMenuLink>
+          <SubMenuLink to="project/task-scheduling">
+            Task Breakdown & Scheduling
+          </SubMenuLink>
+          <SubMenuLink to="project/resource-planning">Resource Planning</SubMenuLink>
+          <SubMenuLink to="project/execution-monitoring">
+            Execution & Monitoring
+          </SubMenuLink>
+          <SubMenuLink to="project/collaboration">
+            Collaboration & Communication
+          </SubMenuLink>
+          <SubMenuLink to="project/reporting">
+            Progress Reporting & Adjustments
+          </SubMenuLink>
+          <SubMenuLink to="project/completion-handover">
+            Project Completion & Handover
+          </SubMenuLink>
+        </SidebarLink>
+      </SidebarItem>
+      <SidebarItem>
         <SidebarLink onClick={() => toggleMenu("orders")}>
           Order Management
         </SidebarLink>
