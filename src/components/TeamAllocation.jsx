@@ -1,6 +1,6 @@
-import React from "react";
-import { Controller, useFieldArray, useForm } from "react-hook-form";
-import Select from "react-select";
+// src/components/TeamAllocation.jsx
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import styled from "styled-components";
 
 const FormContainer = styled.div`
@@ -9,7 +9,7 @@ const FormContainer = styled.div`
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 `;
 
 const FormGroup = styled.div`
@@ -18,152 +18,177 @@ const FormGroup = styled.div`
 
 const Label = styled.label`
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   font-weight: bold;
 `;
 
 const Input = styled.input`
-  width: calc(100% - 20px);
-  padding: 10px;
-  margin-right: 10px;
+  width: 100%;
+  padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 16px;
 `;
 
-const SelectStyled = styled(Select)`
-  margin-bottom: 10px;
-  font-size: 16px;
+const Select = styled.select`
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+`;
+
+const TextArea = styled.textarea`
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 `;
 
 const Button = styled.button`
-  background-color: ${(props) => (props.remove ? "#dc3545" : "#007bff")};
+  background-color: #007bff;
   color: #fff;
-  padding: 10px 20px;
+  padding: 10px 15px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
   margin-top: 10px;
   &:hover {
-    background-color: ${(props) => (props.remove ? "#c82333" : "#0056b3")};
+    background-color: #0056b3;
   }
 `;
 
-const RoleSelect = styled(Select)`
-  width: 100%;
+const TeamMemberList = styled.div`
+  margin-top: 20px;
+  background-color: #e2e2e2;
+  padding: 10px;
+  border-radius: 8px;
 `;
 
-const ErrorText = styled.span`
-  color: red;
-  font-size: 14px;
+const TeamMemberItem = styled.div`
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  &:last-child {
+    border-bottom: none;
+  }
 `;
 
 const TeamAllocation = () => {
-  const {
-    register,
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm({
-    defaultValues: {
-      teamMembers: [{ name: "", role: "", contact: "", manager: false }],
+  const { register, handleSubmit, reset } = useForm();
+
+  // Initialize with default manager and technician
+  const [teamMembers, setTeamMembers] = useState([
+    {
+      name: "John Doe",
+      role: "manager",
+      contact: "john.doe@company.com",
+      responsibilities: "Oversee all operations",
+      assignedEquipment: "Laptop, Mobile Phone",
+      location: "Head Office",
+      availability: "available",
+      manager: "true",
     },
-  });
-
-  const { fields, append, remove } = useFieldArray({
-    control,
-    name: "teamMembers",
-  });
-
-  const roleOptions = [
-    { value: "engineer", label: "Engineer" },
-    { value: "technician", label: "Technician" },
-    { value: "supervisor", label: "Supervisor" },
-    { value: "manager", label: "Manager" },
-  ];
+    {
+      name: "Jane Smith",
+      role: "technician",
+      contact: "jane.smith@company.com",
+      responsibilities: "Handle equipment installation",
+      assignedEquipment: "Tool Kit, Safety Gear",
+      location: "Site B",
+      availability: "available",
+      manager: "false",
+    },
+  ]);
 
   const onSubmit = (data) => {
-    console.log("Team Allocation Data:", data);
+    setTeamMembers([...teamMembers, data]);
+    reset(); // Reset form fields after submission
   };
 
   return (
     <FormContainer>
-      <h1>Advanced Team Allocation</h1>
+      <h1>Team Allocation</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
-        {fields.map((item, index) => (
-          <FormGroup key={item.id}>
-            <Label>Team Member Name</Label>
-            <Input
-              type="text"
-              placeholder="Enter name"
-              {...register(`teamMembers.${index}.name`, {
-                required: "Name is required",
-              })}
-            />
-            {errors.teamMembers && errors.teamMembers[index]?.name && (
-              <ErrorText>{errors.teamMembers[index].name.message}</ErrorText>
-            )}
+        <FormGroup>
+          <Label>Team Member Name</Label>
+          <Input type="text" {...register("name")} />
 
-            <Label>Role</Label>
-            <Controller
-              name={`teamMembers.${index}.role`}
-              control={control}
-              render={({ field }) => (
-                <RoleSelect
-                  {...field}
-                  options={roleOptions}
-                  placeholder="Select Role"
-                />
-              )}
-              rules={{ required: "Role is required" }}
-            />
-            {errors.teamMembers && errors.teamMembers[index]?.role && (
-              <ErrorText>{errors.teamMembers[index].role.message}</ErrorText>
-            )}
+          <Label>Role</Label>
+          <Select {...register("role")}>
+            <option value="engineer">Engineer</option>
+            <option value="technician">Technician</option>
+            <option value="supervisor">Supervisor</option>
+            <option value="manager">Manager</option>
+          </Select>
 
-            <Label>Contact Information</Label>
-            <Input
-              type="text"
-              placeholder="Enter contact"
-              {...register(`teamMembers.${index}.contact`, {
-                required: "Contact is required",
-                pattern: {
-                  value: /^\d+$/,
-                  message: "Contact must be a number",
-                },
-              })}
-            />
-            {errors.teamMembers && errors.teamMembers[index]?.contact && (
-              <ErrorText>{errors.teamMembers[index].contact.message}</ErrorText>
-            )}
+          <Label>Contact Information</Label>
+          <Input type="text" {...register("contact")} />
 
-            <Label>Is Manager?</Label>
-            <SelectStyled
-              {...register(`teamMembers.${index}.manager`)}
-              defaultValue="false"
-            >
-              <option value="false">No</option>
-              <option value="true">Yes</option>
-            </SelectStyled>
+          <Label>Responsibilities</Label>
+          <TextArea rows="3" {...register("responsibilities")} />
 
-            <Button remove type="button" onClick={() => remove(index)}>
-              Remove
-            </Button>
-          </FormGroup>
-        ))}
+          <Label>Assigned Equipment</Label>
+          <Input
+            type="text"
+            placeholder="e.g., Fiber Optic Tools, Safety Gear"
+            {...register("assignedEquipment")}
+          />
 
-        <Button
-          type="button"
-          onClick={() =>
-            append({ name: "", role: "", contact: "", manager: false })
-          }
-        >
-          Add Team Member
-        </Button>
+          <Label>Location</Label>
+          <Input
+            type="text"
+            placeholder="e.g., Site A, Sector 45"
+            {...register("location")}
+          />
 
-        <Button type="submit">Save Allocation</Button>
+          <Label>Availability</Label>
+          <Select {...register("availability")}>
+            <option value="available">Available</option>
+            <option value="busy">Busy</option>
+            <option value="on-leave">On Leave</option>
+          </Select>
+
+          <Label>Is Manager?</Label>
+          <Select {...register("manager")}>
+            <option value="false">No</option>
+            <option value="true">Yes</option>
+          </Select>
+        </FormGroup>
+
+        <Button type="submit">Add Team Member</Button>
       </form>
+
+      <TeamMemberList>
+        <h2>Team Member List</h2>
+        {teamMembers.map((member, index) => (
+          <TeamMemberItem key={index}>
+            <p>
+              <strong>Name:</strong> {member.name}
+            </p>
+            <p>
+              <strong>Role:</strong> {member.role}
+            </p>
+            <p>
+              <strong>Contact:</strong> {member.contact}
+            </p>
+            <p>
+              <strong>Responsibilities:</strong> {member.responsibilities}
+            </p>
+            <p>
+              <strong>Assigned Equipment:</strong> {member.assignedEquipment}
+            </p>
+            <p>
+              <strong>Location:</strong> {member.location}
+            </p>
+            <p>
+              <strong>Availability:</strong> {member.availability}
+            </p>
+            <p>
+              <strong>Is Manager?</strong>{" "}
+              {member.manager === "true" ? "Yes" : "No"}
+            </p>
+          </TeamMemberItem>
+        ))}
+      </TeamMemberList>
     </FormContainer>
   );
 };
