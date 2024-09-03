@@ -3,10 +3,10 @@ import { Route, Routes } from "react-router-dom";
 import OrderTracking from "../components/OrderTracking";
 import PurchaseOrders from "../components/PurchaseOrders";
 import VendorManagement from "../components/VendorManagement";
-<<<<<<< HEAD
+
 import VendorDetailsPage from "../components/VendorDetailsPage";
 import { TaskScheduling } from "../components/TaskScheduling";
->>>>>>> 43666c7bc2b4daad9510daff5ee48056e62ed152
+
 
 function OrderManagementPage() {
   return (
