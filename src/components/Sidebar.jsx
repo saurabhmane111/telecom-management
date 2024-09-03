@@ -101,11 +101,17 @@ const Sidebar = () => {
       <SidebarItem>
         <SidebarLink onClick={() => toggleMenu("project")}>
           Project Management
-          <SubMenuLink to="project/initialization">Project Initialization</SubMenuLink>
+        </SidebarLink>
+        <SubMenu open={openMenu === "project"}>
+          <SubMenuLink to="project/initialization">
+            Project Initialization
+          </SubMenuLink>
           <SubMenuLink to="project/task-scheduling">
             Task Breakdown & Scheduling
           </SubMenuLink>
-          <SubMenuLink to="project/resource-planning">Resource Planning</SubMenuLink>
+          <SubMenuLink to="project/resource-planning">
+            Resource Planning
+          </SubMenuLink>
           <SubMenuLink to="project/execution-monitoring">
             Execution & Monitoring
           </SubMenuLink>
@@ -118,7 +124,7 @@ const Sidebar = () => {
           <SubMenuLink to="project/completion-handover">
             Project Completion & Handover
           </SubMenuLink>
-        </SidebarLink>
+        </SubMenu>
       </SidebarItem>
       <SidebarItem>
         <SidebarLink onClick={() => toggleMenu("orders")}>
