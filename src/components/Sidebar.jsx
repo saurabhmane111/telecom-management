@@ -109,6 +109,10 @@ const Sidebar = () => {
           <SubMenuItem>
             <SubMenuLink to="/orders/vendors">Vendor Management</SubMenuLink>
           </SubMenuItem>
+
+          <SubMenuItem>
+            <SubMenuLink to="/orders/vendord">Vendor Details</SubMenuLink>
+          </SubMenuItem>
           <SubMenuItem>
             <SubMenuLink to="/orders/purchase-orders">
               Purchase Orders

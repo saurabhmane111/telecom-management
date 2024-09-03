@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import OrderTracking from "../components/OrderTracking";
 import PurchaseOrders from "../components/PurchaseOrders";
 import VendorManagement from "../components/VendorManagement";
+import VendorDetailsPage from "../components/VendorDetailsPage";
 
 function OrderManagementPage() {
   return (
@@ -13,6 +14,7 @@ function OrderManagementPage() {
         <Route path="tracking" element={<OrderTracking />} />
         <Route path="vendors" element={<VendorManagement />} />
         <Route path="purchase-orders" element={<PurchaseOrders />} />
+        <Route path="vendord" element={<VendorDetailsPage/>} />
       </Routes>
     </div>
   );

@@ -1,66 +1,6 @@
-// // src/components/VendorManagement.js
-// import React from "react";
-// import { useForm } from "react-hook-form";
-// import styled from "styled-components";
-
-// const VendorForm = styled.form`
-//   display: flex;
-//   flex-direction: column;
-//   margin: 20px;
-//   padding: 20px;
-//   border: 1px solid #ddd;
-// `;
-
-// const Input = styled.input`
-//   margin-bottom: 10px;
-//   padding: 10px;
-//   font-size: 16px;
-//   border-radius: 4px;
-//   border: 1px solid #ccc;
-// `;
-
-// const Button = styled.button`
-//   padding: 10px;
-//   font-size: 16px;
-//   background-color: #007bff;
-//   color: white;
-//   border: none;
-//   border-radius: 4px;
-//   cursor: pointer;
-
-//   &:hover {
-//     background-color: #0056b3;
-//   }
-// `;
-
-// function VendorManagement() {
-//   const { register, handleSubmit, reset } = useForm();
-
-//   const onSubmit = (data) => {
-//     console.log("Vendor data: ", data);
-//     reset();
-//   };
-
-//   return (
-//     <VendorForm onSubmit={handleSubmit(onSubmit)}>
-//       <Input
-//         {...register("vendorName", { required: true })}
-//         placeholder="Vendor Name"
-//       />
-//       <Input
-//         {...register("contactDetails", { required: true })}
-//         placeholder="Contact Details"
-//       />
-//       <Button type="submit">Add Vendor</Button>
-//     </VendorForm>
-//   );
-// }
-
-// export default VendorManagement;
-
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
+import { useNavigate } from 'react-router-dom';
 const Container = styled.div`
     margin: 20px;
 `;
@@ -148,12 +88,13 @@ const ProcessedButton = styled.button`
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    display: ${props => (props.show ? 'block' : 'none')};
 
     &:hover {
         background-color: #218838;
     }
 `;
+
+
 
 const vendors = [
     // Dummy data as before
@@ -180,10 +121,12 @@ const vendors = [
     // Add more vendors as needed...
 ];
 
+
 const VendorTable = () => {
     const [searchText, setSearchText] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [checkedVendors, setCheckedVendors] = useState([]);
+    const navigate = useNavigate();
 
     const handleSearchChange = (e) => {
         setSearchText(e.target.value.toLowerCase());
@@ -202,8 +145,7 @@ const VendorTable = () => {
     };
 
     const handleProcessedClick = () => {
-        console.log('Processed Vendors:', checkedVendors);
-        // Handle your processing logic here
+        navigate('/vendord', { state: { checkedVendors } });
     };
 
     const filteredVendors = vendors.filter(vendor => {
@@ -253,7 +195,6 @@ const VendorTable = () => {
                         <TableRow key={index}>
                             <TableCell>
                                 <Checkbox
-                                    type="checkbox"
                                     checked={checkedVendors.includes(vendor)}
                                     onChange={() => handleCheckboxChange(vendor)}
                                 />
@@ -268,9 +209,9 @@ const VendorTable = () => {
                     ))}
                 </tbody>
             </Table>
-            <ProcessedButton show={checkedVendors.length > 0} onClick={handleProcessedClick}>
-                Processed
-            </ProcessedButton>
+            <ProcessedButton onClick={handleProcessedClick}>
+    Processed
+</ProcessedButton>
         </Container>
     );
 };
